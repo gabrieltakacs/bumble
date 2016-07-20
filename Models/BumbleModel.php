@@ -278,7 +278,8 @@ abstract class BumbleModel extends Model
     {
         if (!Schema::hasTable($this->getTable()))
         {
-            throw new TableNotFoundException("The specified table '{$this->getTable()}' doesn't exist.");
+            // throw new TableNotFoundException("The specified table '{$this->getTable()}' doesn't exist.");
+            Log::warning("The specified table '{$this->getTable()}' doesn't exist.");
         }
 
         return true;
