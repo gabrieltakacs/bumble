@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\SoftDeletingTrait;
 use Illuminate\Database\Schema\Blueprint;
 use Schema;
 use Monarkee\Bumble\Exceptions\TableNotFoundException;
+use Illuminate\Support\Facades\Log;
 use ReflectionClass;
 use Str;
 use Config;
