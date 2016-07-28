@@ -31,7 +31,7 @@ class LoginController extends BumbleController
      */
     public function getLogin()
     {
-        if (Auth::check())
+        if (Auth::check('user'))
         {
             return Redirect::route('bumble.dashboard');
         }
@@ -57,7 +57,7 @@ class LoginController extends BumbleController
         }
 
         // Log the user in
-        if (Auth::attempt($creds))
+        if (Auth::attempt('user',$creds))
         {
             return Redirect::route('bumble.dashboard');
         }
@@ -67,7 +67,7 @@ class LoginController extends BumbleController
 
     public function getLogout()
     {
-        Auth::logout();
+        Auth::logout('user');
         return Redirect::route('bumble.login');
     }
 
