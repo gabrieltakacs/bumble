@@ -178,13 +178,18 @@ class PostController extends BumbleController
             $this->postService->create($model, $input);
 
             return Redirect::route($this->config->get('bumble.admin_prefix').'.'.$segment.'.index')
-                           ->withSuccess('The entry was successfully created');
+                ->withSuccess('
+                                The entry 
+                                <a href="'.route(config("bumble.admin_prefix") . "." . $model->getPluralSlug() . "." . "edit", ["id" => $model->id]).'">
+                                (id: ' . $model->id . ') 
+                                </a> 
+                                was successfully created');
         }
         catch (ValidationException $e)
         {
             return Redirect::back()
-                           ->withInput()
-                           ->with('errors', $e->getErrors());
+                ->withInput()
+                ->with('errors', $e->getErrors());
         }
     }
 
